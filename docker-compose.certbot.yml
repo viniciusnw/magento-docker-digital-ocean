@@ -10,6 +10,7 @@ services:
     volumes: 
     - ./docker/certbot/www/:/var/www/certbot/
     - ./docker/conf/certbot.default.conf:/etc/nginx/conf.d/default.conf
+    
   certbot:
     image: certbot/certbot:latest
     command: certbot certonly -v --standalone --email vinicius@castledigital.com.br --agree-tos --no-eff-email --staging -d dev-magento-runningland.castledigital.com.br
