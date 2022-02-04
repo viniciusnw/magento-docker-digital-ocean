@@ -13,7 +13,7 @@ services:
 
   certbot:
     image: certbot/certbot:latest
-    command: certbot certonly -v --standalone --email vinicius@castledigital.com.br --agree-tos --no-eff-email --staging -d dev-magento-runningland.castledigital.com.br
+    command: certonly -v --standalone --email vinicius@castledigital.com.br --agree-tos --no-eff-email --staging -d dev-magento-runningland.castledigital.com.br
     depends_on:
       - nginx
     volumes:
