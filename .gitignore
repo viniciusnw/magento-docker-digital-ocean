@@ -1,3 +1,4 @@
 notes.md
 src/*
 docker/certbot/**
+docker/mysql/**

@@ -35,7 +35,7 @@ services:
       - "3306:3306"
     env_file: env/db.env
     volumes:
-      - dbdata:/var/lib/mysql
+      - ./docker/mysql:/var/lib/mysql
 
   redis:
     image: redis:5.0-alpine
