@@ -1,0 +1,8 @@
+version: "3"
+
+services:
+  certbot:
+    image: certbot/certbot:latest
+    volumes:
+      - ./docker/certbot/conf/:/etc/letsencrypt/
+      - ./src:/var/www/html
