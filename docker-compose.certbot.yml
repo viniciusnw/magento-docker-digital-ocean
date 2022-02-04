@@ -1,8 +1,17 @@
 version: "3"
 
 services:
+  nginx:
+    image: nginx:latest
+    ports:
+      - 80:80
+      - 443:443
+    restart: always
+    volumes: 
+    - ./docker/certbot/www/:/var/www/certbot/
+    - ./docker/conf/certbot.default.conf:/etc/nginx/conf.d/default.conf
   certbot:
     image: certbot/certbot:latest
     volumes:
+      - ./docker/certbot/www/:/var/www/certbot/
       - ./docker/certbot/conf/:/etc/letsencrypt/
-      - ./src:/var/www/html
