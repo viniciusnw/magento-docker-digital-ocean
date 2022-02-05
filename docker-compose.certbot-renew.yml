@@ -1,0 +1,17 @@
+# CastleDigital's Docker Configuration for Magento
+# (https://github.com/viniciusnw/magento-docker-digitalOcean)
+#
+# Version 1.0.0
+
+version: "3"
+
+services:
+
+  certbot:
+    image: certbot/certbot:latest
+    command: certbot renew
+    depends_on:
+      - nginx
+    volumes:
+      - ./docker/certbot/www/:/var/www/certbot/
+      - ./docker/certbot/conf/:/etc/letsencrypt/
