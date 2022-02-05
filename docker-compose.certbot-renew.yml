@@ -9,7 +9,7 @@ services:
 
   certbot:
     image: certbot/certbot:latest
-    command: certbot renew
+    command: renew
     depends_on:
       - nginx
     volumes:
