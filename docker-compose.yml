@@ -8,7 +8,7 @@ version: "3"
 services:
   app:
     build:
-      context: ./docker/nginx/
+      context: ./docker/nginx
       dockerfile: "Dockerfile"
     ports:
       - "80:8000"
