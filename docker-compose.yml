@@ -76,6 +76,17 @@ services:
       - db
     environment:
       - PMA_ARBITRARY=1
+
+  cron:
+    build:
+      context: ./docker/php
+      dockerfile: "Dockerfile"
+    user: root
+    command: /usr/local/bin/cronstart
+    tty: true
+    links:
+      - db
+    volumes: *appvolumes
     
 volumes:
   appdata:
