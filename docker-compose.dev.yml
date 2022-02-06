@@ -9,7 +9,6 @@ services:
   app:
     volumes: &appvolumes
       - ./src:/var/www/html:cached
-      - ./docker/certbot/conf/:/etc/nginx/ssl/
 
   phpfpm:
     volumes: *appvolumes
