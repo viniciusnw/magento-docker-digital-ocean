@@ -98,7 +98,7 @@ COPY conf/php-fpm.conf /usr/local/etc/
 
 RUN mkdir -p /etc/nginx/html /var/www/html /var/www/html/pub /sock
 
-USER root:root
+USER app:app
 
 VOLUME /var/www
 
