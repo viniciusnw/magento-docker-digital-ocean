@@ -19,7 +19,9 @@ services:
   certbot:
     image: certbot/certbot:latest
     # command: certonly -v --webroot --webroot-path /var/www/certbot/ --email vinicius@castledigital.com.br --agree-tos --staple-ocsp -d dev-magento-runningland.castledigital.com.br
-    command: certonly -v --webroot --webroot-path /var/www/certbot/ --email vinicius@castledigital.com.br --agree-tos -d dev-magento-runningland.castledigital.com.br -d www.dev-magento-runningland.castledigital.com.br
+    command: >
+      certonly -v --webroot --webroot-path /var/www/certbot/ --email vinicius@castledigital.com.br --agree-tos --no-eff-email --staple-ocsp --must-staple -d dev-magento-runningland.castledigital.com.br -d www.dev-magento-runningland.castledigital.com.br
+      && openssl dhparam -dsaparam -out /etc/letsencrypt/live/dhparam.pem 4096
     depends_on:
       - nginx
     volumes:
