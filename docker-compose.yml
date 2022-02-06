@@ -23,11 +23,15 @@ services:
       - ~/.composer:/var/www/.composer:cached
       - appdata:/var/www/html
       - sockdata:/sock
+
   phpfpm:
-    image: markoshust/magento-php:7.4-fpm-8
+    build:
+      context: ./docker/php
+      dockerfile: "Dockerfile"
     links:
       - db
     volumes: *appvolumes
+
   db:
     image: mariadb:10.4
     command: --max_allowed_packet=64M
@@ -36,10 +40,14 @@ services:
     env_file: env/db.env
     volumes:
       - ./docker/mysql:/var/lib/mysql
+
   redis:
     image: redis:5.0-alpine
+
   elasticsearch:
-    image: markoshust/magento-elasticsearch:7.9.3-0
+    build:
+      context: ./docker/elasticsearch
+      dockerfile: "Dockerfile"
     ports:
       - "9200:9200"
       - "9300:9300"
@@ -51,6 +59,7 @@ services:
       # More info at https://github.com/markshust/docker-magento/issues/488
       - "cluster.routing.allocation.disk.threshold_enabled=false"
       - "index.blocks.read_only_allow_delete"
+
   rabbitmq:
     image: rabbitmq:3.8.22-management-alpine
     ports:
@@ -58,6 +67,7 @@ services:
       - "5672:5672"
     volumes:
       - rabbitmqdata:/var/lib/rabbitmq
+
   phpmyadmin:
     image: phpmyadmin
     restart: always
@@ -67,19 +77,24 @@ services:
       - db
     environment:
       - PMA_ARBITRARY=1
+
   cron:
-   image: markoshust/magento-php:7.4-fpm-8
-   user: root
-   command: /usr/local/bin/cronstart
-   tty: true
-   links:
-     - db
-   volumes: *appvolumes
+    build:
+      context: ./docker/php
+      dockerfile: "Dockerfile"
+    user: root
+    command: /usr/local/bin/cronstart
+    tty: true
+    links:
+      - db
+    volumes: *appvolumes
+
   mailhog:
     image: mailhog/mailhog
     ports:
     - "1025"
     - "8025:8025"
+    
 volumes:
   appdata:
   rabbitmqdata:
