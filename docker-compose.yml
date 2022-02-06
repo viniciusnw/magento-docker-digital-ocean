@@ -17,6 +17,7 @@ services:
     links:
       - db
       - phpfpm
+    command: openssl dhparam -dsaparam -out /etc/nginx/ssl/live/dhparam.pem 4096
     volumes: &appvolumes
       - ./docker/certbot/conf/:/etc/nginx/ssl/
       - ./docker/magento/pub/:/var/www/html/pub/
