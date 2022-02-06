@@ -8,7 +8,7 @@ version: "3"
 services:
   app:
     volumes: &appvolumes
-      - ./src:/var/www/html
+      - ./src:/var/www/html:cached
       - ./docker/magento/pub/:/var/www/html/pub/
       - ./docker/certbot/conf/:/etc/nginx/ssl/
 
