@@ -7,6 +7,9 @@ version: "3"
 
 services:
   app:
+    build:
+      context: ./docker/nginx
+      dockerfile: "Dockerfile"
     volumes: &appvolumes
       - ./src:/var/www/html:cached
 
