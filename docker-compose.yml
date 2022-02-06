@@ -41,32 +41,32 @@ services:
     volumes:
       - ./docker/mysql:/var/lib/mysql
 
-  redis:
-    image: redis:5.0-alpine
+  # redis:
+  #   image: redis:5.0-alpine
 
-  elasticsearch:
-    build:
-      context: ./docker/elasticsearch
-      dockerfile: "Dockerfile"
-    ports:
-      - "9200:9200"
-      - "9300:9300"
-    environment:
-      - "discovery.type=single-node"
-      # Set custom heap size to avoid memory errors
-      - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
-      # Avoid test failures due to small disks
-      # More info at https://github.com/markshust/docker-magento/issues/488
-      - "cluster.routing.allocation.disk.threshold_enabled=false"
-      - "index.blocks.read_only_allow_delete"
+  # elasticsearch:
+  #   build:
+  #     context: ./docker/elasticsearch
+  #     dockerfile: "Dockerfile"
+  #   ports:
+  #     - "9200:9200"
+  #     - "9300:9300"
+  #   environment:
+  #     - "discovery.type=single-node"
+  #     # Set custom heap size to avoid memory errors
+  #     - "ES_JAVA_OPTS=-Xms1g -Xmx1g"
+  #     # Avoid test failures due to small disks
+  #     # More info at https://github.com/markshust/docker-magento/issues/488
+  #     - "cluster.routing.allocation.disk.threshold_enabled=false"
+  #     - "index.blocks.read_only_allow_delete"
 
-  rabbitmq:
-    image: rabbitmq:3.8.22-management-alpine
-    ports:
-      - "15672:15672"
-      - "5672:5672"
-    volumes:
-      - rabbitmqdata:/var/lib/rabbitmq
+  # rabbitmq:
+  #   image: rabbitmq:3.8.22-management-alpine
+  #   ports:
+  #     - "15672:15672"
+  #     - "5672:5672"
+  #   volumes:
+  #     - rabbitmqdata:/var/lib/rabbitmq
 
   phpmyadmin:
     image: phpmyadmin
@@ -78,16 +78,16 @@ services:
     environment:
       - PMA_ARBITRARY=1
 
-  cron:
-    build:
-      context: ./docker/php
-      dockerfile: "Dockerfile"
-    user: root
-    command: /usr/local/bin/cronstart
-    tty: true
-    links:
-      - db
-    volumes: *appvolumes
+  # cron:
+  #   build:
+  #     context: ./docker/php
+  #     dockerfile: "Dockerfile"
+  #   user: root
+  #   command: /usr/local/bin/cronstart
+  #   tty: true
+  #   links:
+  #     - db
+  #   volumes: *appvolumes
     
 volumes:
   appdata:
