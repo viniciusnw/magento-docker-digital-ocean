@@ -19,7 +19,7 @@ RUN mkdir -p /etc/nginx/html /var/www/html \
 
 EXPOSE 8443
 
-USER app:app
+USER root
 
 VOLUME /var/www
 
