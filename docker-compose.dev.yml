@@ -9,3 +9,15 @@ services:
   app:
     volumes: &appvolumes
       - ./src:/var/www/html:cached
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025"
+      - "8025:8025"
+      
+  cron:
+    build:
+      context: ./docker/php
+      dockerfile: "Dockerfile"
+    volumes: *appvolumes
