@@ -17,8 +17,6 @@ services:
       - db
       - phpfpm
     volumes: &appvolumes
-      - ./docker/magento/pub/:/var/www/html/pub/
-      - ./docker/certbot/conf/:/etc/nginx/ssl/
       - ~/.composer:/var/www/.composer:cached
       - appdata:/var/www/html
       - sockdata:/sock

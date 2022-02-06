@@ -9,6 +9,11 @@ services:
   app:
     volumes: &appvolumes
       - ./src:/var/www/html
+      - ./docker/magento/pub/:/var/www/html/pub/
+      - ./docker/certbot/conf/:/etc/nginx/ssl/
+
+  phpfpm:
+    volumes: *appvolumes
 
   mailhog:
     image: mailhog/mailhog
