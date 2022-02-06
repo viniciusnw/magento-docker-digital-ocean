@@ -103,7 +103,7 @@ COPY conf/php-fpm.conf /usr/local/etc/
 RUN mkdir -p /etc/nginx/html /var/www/html /var/www/html/pub /sock \
   && chown -R app:app /etc/nginx /var/www /usr/local/etc/php/conf.d /sock
 
-USER app:app
+USER root:root
 
 VOLUME /var/www
 
