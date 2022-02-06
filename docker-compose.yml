@@ -19,16 +19,16 @@ services:
       - phpfpm
     volumes: &appvolumes
       - ./docker/certbot/conf/:/etc/nginx/ssl/
-      - ./docker/magento/pub/:/var/www/html/pub/
       - ~/.composer:/var/www/.composer:cached
+      - pubdata:/var/www/html/pub/
       - appdata:/var/www/html
       - sockdata:/sock
 
   phpfpm:
-    build:
-      context: ./docker/php
-      dockerfile: "Dockerfile"
     user: root
+    build:
+      context: ./docker/php.old
+      dockerfile: "Dockerfile"
     links:
       - db
     volumes: *appvolumes
@@ -81,7 +81,7 @@ services:
 
   cron:
     build:
-      context: ./docker/php
+      context: ./docker/php.old
       dockerfile: "Dockerfile"
     user: root
     command: /usr/local/bin/cronstart
@@ -91,6 +91,7 @@ services:
     volumes: *appvolumes
     
 volumes:
+  pubdata:
   appdata:
   rabbitmqdata:
   sockdata:
