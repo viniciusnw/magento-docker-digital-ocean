@@ -28,7 +28,7 @@ services:
     build:
       context: ./docker/php
       dockerfile: "Dockerfile"
-    user: root
+    user: app
     links:
       - db
     volumes: *appvolumes
