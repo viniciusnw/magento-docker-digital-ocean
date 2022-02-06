@@ -11,7 +11,7 @@ services:
       context: ./docker/nginx
       dockerfile: "Dockerfile"
     volumes: &appvolumes
-      - ./src:/var/www/html:cached
+      - ./src:/var/www/html
 
   mailhog:
     image: mailhog/mailhog
