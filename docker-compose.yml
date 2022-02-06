@@ -10,7 +10,7 @@ services:
     build:
       context: ./docker/nginx
       dockerfile: "Dockerfile"
-    user: app
+    user: root
     ports:
       - "80:8000"
       - "443:8443"
