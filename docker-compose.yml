@@ -32,14 +32,14 @@ services:
       - db
     volumes: *appvolumes
 
-  db:
-    image: mariadb:10.4
-    command: --max_allowed_packet=64M
-    ports:
-      - "3306:3306"
-    env_file: env/db.env
-    volumes:
-      - ./docker/mysql:/var/lib/mysql
+  # db:
+  #   image: mariadb:10.4
+  #   command: --max_allowed_packet=64M
+  #   ports:
+  #     - "3306:3306"
+  #   env_file: env/db.env
+  #   volumes:
+  #     - ./docker/mysql:/var/lib/mysql
 
   # redis:
   #   image: redis:5.0-alpine
@@ -68,15 +68,15 @@ services:
   #   volumes:
   #     - rabbitmqdata:/var/lib/rabbitmq
 
-  phpmyadmin:
-    image: phpmyadmin
-    restart: always
-    ports:
-      - 8080:80
-    links:
-      - db
-    environment:
-      - PMA_ARBITRARY=1
+  # phpmyadmin:
+  #   image: phpmyadmin
+  #   restart: always
+  #   ports:
+  #     - 8080:80
+  #   links:
+  #     - db
+  #   environment:
+  #     - PMA_ARBITRARY=1
 
   # cron:
   #   build:
