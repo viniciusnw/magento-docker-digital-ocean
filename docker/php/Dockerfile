@@ -75,14 +75,14 @@ RUN apt-get install -y libmagickwand-dev \
   && pecl install imagick  \
   && docker-php-ext-enable imagick
 
-RUN groupadd -g "$APP_ID" root \
-  && useradd -g "$APP_ID" -u "$APP_ID" -d /var/www -s /bin/bash root
+# RUN groupadd -g "$APP_ID" root \
+#   && useradd -g "$APP_ID" -u "$APP_ID" -d /var/www -s /bin/bash root
 
 RUN apt-get install -y gnupg \
   && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
   && apt-get install -y nodejs \
   && mkdir /var/www/.config /var/www/.npm \
-  && chown app:app /var/www/.config /var/www/.npm \
+  && chown root:root /var/www/.config /var/www/.npm \
   && npm install -g grunt-cli
 
 RUN apt-get install -y msmtp mailutils
