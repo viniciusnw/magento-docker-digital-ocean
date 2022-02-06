@@ -25,7 +25,7 @@ services:
       - sockdata:/sock
 
   phpfpm:
-    user: root
+    # user: root
     build:
       context: ./docker/php.old
       dockerfile: "Dockerfile"
