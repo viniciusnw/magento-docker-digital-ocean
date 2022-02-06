@@ -12,7 +12,7 @@ ES_PORT=9200
 
 bin/stop
 
-docker-compose -f docker-compose.yml up -d --remove-orphans "$@"
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up -d --remove-orphans "$@"
 [ $? != 0 ] && echo "Failed to start Docker services" && exit
 
 bin/clinotty chmod u+x bin/magento
