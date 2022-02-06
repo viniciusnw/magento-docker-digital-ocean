@@ -18,6 +18,7 @@ services:
       - phpfpm
     volumes: &appvolumes
       - ~/.composer:/var/www/.composer:cached
+      - pubdata:/var/www/html/pub
       - appdata:/var/www/html
       - sockdata:/sock
 
@@ -87,6 +88,7 @@ services:
     volumes: *appvolumes
     
 volumes:
+  pubdata:
   appdata:
   rabbitmqdata:
   sockdata:

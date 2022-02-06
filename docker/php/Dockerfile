@@ -100,7 +100,7 @@ COPY conf/www.conf /usr/local/etc/php-fpm.d/
 COPY conf/php.ini /usr/local/etc/php/
 COPY conf/php-fpm.conf /usr/local/etc/
 
-RUN mkdir -p /etc/nginx/html /var/www/html /sock \
+RUN mkdir -p /etc/nginx/html /var/www/html /var/www/html/pub /sock \
   && chown -R app:app /etc/nginx /var/www /usr/local/etc/php/conf.d /sock
 
 USER app:app
