@@ -18,6 +18,7 @@ services:
       - db
       - phpfpm
     volumes:
+      - ./src:/var/www/html:cached
       - ./docker/certbot/conf/:/etc/nginx/ssl/
 
   phpfpm:
@@ -99,6 +100,5 @@ services:
       - "8025:8025"
     
 volumes:
-  pubdata:
   appdata:
   rabbitmqdata:
