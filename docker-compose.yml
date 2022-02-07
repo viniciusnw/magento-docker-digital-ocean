@@ -29,8 +29,8 @@ services:
       - db
     volumes: 
       - ./src:/var/www/html:cached
+      - ./docker/magento/pub/:/var/www/html/pub/
       - ~/.composer:/var/www/.composer:cached
-      - pubdata:/var/www/html/pub/
 
   cron:
     build:
@@ -44,7 +44,7 @@ services:
     volumes: 
       - ./src:/var/www/html:cached
       - ~/.composer:/var/www/.composer:cached
-      - pubdata:/var/www/html/pub/
+      - ./docker/magento/pub/:/var/www/html/pub/
 
   db:
     image: mariadb:10.4
