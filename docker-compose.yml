@@ -10,7 +10,6 @@ services:
     build:
       context: ./docker/nginx
       dockerfile: "Dockerfile"
-    user: root
     ports:
       - "80:8000"
       - "443:8443"
@@ -20,9 +19,9 @@ services:
     volumes:
       - ./src:/var/www/html:cached
       - ./docker/certbot/conf/:/etc/nginx/ssl/
+      - magentopubdata:/var/www/html/pub/
 
   phpfpm:
-    user: root
     build:
       context: ./docker/php.old
       dockerfile: "Dockerfile"
@@ -30,8 +29,8 @@ services:
       - db
     volumes: 
       - ./src:/var/www/html:cached
-      - ./docker/magento/pub/:/var/www/html/pub/
       - ~/.composer:/var/www/.composer:cached
+      - magentopubdata:/var/www/html/pub/
 
   cron:
     build:
@@ -45,7 +44,7 @@ services:
     volumes: 
       - ./src:/var/www/html:cached
       - ~/.composer:/var/www/.composer:cached
-      - ./docker/magento/pub/:/var/www/html/pub/
+      - magentopubdata:/var/www/html/pub/
 
   db:
     image: mariadb:10.4
@@ -100,5 +99,5 @@ services:
       - "8025:8025"
     
 volumes:
-  appdata:
+  magentopubdata:
   rabbitmqdata:
