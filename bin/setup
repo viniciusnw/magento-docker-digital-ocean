@@ -82,5 +82,8 @@ sudo bin/setup-composer-auth
 echo "Installing cron (see docker-compose.yml to enable)..."
 sudo bin/magento cron:install
 
+echo "Fix Perms"
+sudo bin/clinotty chmod -R 777 var pub generated
+
 echo "Docker development environment setup complete."
 echo "You may now access your Magento instance at https://${BASE_URL}/"
