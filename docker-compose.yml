@@ -17,21 +17,20 @@ services:
     links:
       - db
       - phpfpm
-    volumes: &appvolumes
+    volumes:
       - ./docker/certbot/conf/:/etc/nginx/ssl/
-      - ~/.composer:/var/www/.composer:cached
-      - pubdata:/var/www/html/pub/
-      - appdata:/var/www/html
-      - sockdata:/sock
 
   phpfpm:
-    # user: root
+    user: root
     build:
       context: ./docker/php.old
       dockerfile: "Dockerfile"
     links:
       - db
-    volumes: *appvolumes
+    volumes: 
+      - ./src:/var/www/html:cached
+      - ~/.composer:/var/www/.composer:cached
+      - pubdata:/var/www/html/pub/
 
   db:
     image: mariadb:10.4
@@ -88,10 +87,18 @@ services:
     tty: true
     links:
       - db
-    volumes: *appvolumes
+    volumes: 
+      - ./src:/var/www/html:cached
+      - ~/.composer:/var/www/.composer:cached
+      - pubdata:/var/www/html/pub/
+
+  mailhog:
+    image: mailhog/mailhog
+    ports:
+      - "1025"
+      - "8025:8025"
     
 volumes:
   pubdata:
   appdata:
   rabbitmqdata:
-  sockdata:

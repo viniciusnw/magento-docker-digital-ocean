@@ -1,4 +1,4 @@
-FROM php:7.4-fpm-buster
+FROM php:7.4-fpm
 MAINTAINER CastleDigital
 
 ARG APP_ID=1000
@@ -75,14 +75,10 @@ RUN apt-get install -y libmagickwand-dev \
   && pecl install imagick  \
   && docker-php-ext-enable imagick
 
-RUN groupadd -g "$APP_ID" app \
-  && useradd -g "$APP_ID" -u "$APP_ID" -d /var/www -s /bin/bash app
-
 RUN apt-get install -y gnupg \
   && curl -sL https://deb.nodesource.com/setup_14.x | bash - \
   && apt-get install -y nodejs \
   && mkdir /var/www/.config /var/www/.npm \
-  && chown app:app /var/www/.config /var/www/.npm \
   && npm install -g grunt-cli
 
 RUN apt-get install -y msmtp mailutils
@@ -98,13 +94,11 @@ RUN curl -s https://packages.blackfire.io/gpg.key | apt-key add - \
 
 COPY conf/www.conf /usr/local/etc/php-fpm.d/
 COPY conf/php.ini /usr/local/etc/php/
-COPY conf/php-fpm.conf /usr/local/etc/
 
-RUN mkdir -p /etc/nginx/html /var/www/html /var/www/html/pub /sock \
-  && chown -R app:app /etc/nginx /var/www /usr/local/etc/php/conf.d /sock
-
-USER app:app
+RUN mkdir -p /etc/nginx/html /var/www/html /var/www/html/pub
 
 VOLUME /var/www
 
 WORKDIR /var/www/html
+
+EXPOSE 9000
