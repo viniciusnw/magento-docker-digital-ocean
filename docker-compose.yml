@@ -19,7 +19,6 @@ services:
     volumes:
       - ./src:/var/www/html:cached
       - ./docker/certbot/conf/:/etc/nginx/ssl/
-      - magentopubdata:/var/www/html/pub/
 
   phpfpm:
     build:
@@ -30,7 +29,6 @@ services:
     volumes: 
       - ./src:/var/www/html:cached
       - ~/.composer:/var/www/.composer:cached
-      - magentopubdata:/var/www/html/pub/
 
   cron:
     build:
@@ -44,7 +42,6 @@ services:
     volumes: 
       - ./src:/var/www/html:cached
       - ~/.composer:/var/www/.composer:cached
-      - magentopubdata:/var/www/html/pub/
 
   db:
     image: mariadb:10.4

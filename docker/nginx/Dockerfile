@@ -11,7 +11,7 @@ RUN apk add --no-cache \
 COPY ./conf/nginx.conf /etc/nginx/
 COPY ./conf/default.conf /etc/nginx/conf.d/
 
-RUN mkdir -p /etc/nginx/html /var/www/html /var/www/html/pub
+RUN mkdir -p /etc/nginx/html /var/www/html
 
 EXPOSE 8443
 
