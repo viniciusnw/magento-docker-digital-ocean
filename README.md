@@ -19,8 +19,8 @@ bin/start
 
 ### Recover DB
 ```sql
-UPDATE `core_config_data` SET `value` = 'https://dev-magento-runningland.castledigital.com.br/' WHERE `core_config_data`.`config_id` = 381;
-UPDATE `core_config_data` SET `value` = 'https://dev-magento-runningland.castledigital.com.br/' WHERE `core_config_data`.`config_id` = 4;
+UPDATE `core_config_data` SET `value` = 'https://url/' WHERE `core_config_data`.`config_id` = 381;
+UPDATE `core_config_data` SET `value` = 'https://url/' WHERE `core_config_data`.`config_id` = 4;
 UPDATE `core_config_data` SET `value` = 'elasticsearch' WHERE `core_config_data`.`config_id` = 1;
 UPDATE `core_config_data` SET `value` = '9200' WHERE `core_config_data`.`config_id` = 2;
 ```
