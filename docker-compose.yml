@@ -32,6 +32,20 @@ services:
       - ~/.composer:/var/www/.composer:cached
       - pubdata:/var/www/html/pub/
 
+  cron:
+    build:
+      context: ./docker/php.old
+      dockerfile: "Dockerfile"
+    user: root
+    command: /usr/local/bin/cronstart
+    tty: true
+    links:
+      - db
+    volumes: 
+      - ./src:/var/www/html:cached
+      - ~/.composer:/var/www/.composer:cached
+      - pubdata:/var/www/html/pub/
+
   db:
     image: mariadb:10.4
     command: --max_allowed_packet=64M
@@ -77,20 +91,6 @@ services:
       - db
     environment:
       - PMA_ARBITRARY=1
-
-  cron:
-    build:
-      context: ./docker/php.old
-      dockerfile: "Dockerfile"
-    user: root
-    command: /usr/local/bin/cronstart
-    tty: true
-    links:
-      - db
-    volumes: 
-      - ./src:/var/www/html:cached
-      - ~/.composer:/var/www/.composer:cached
-      - pubdata:/var/www/html/pub/
 
   mailhog:
     image: mailhog/mailhog

@@ -97,8 +97,6 @@ COPY conf/php.ini /usr/local/etc/php/
 
 RUN mkdir -p /etc/nginx/html /var/www/html /var/www/html/pub
 
-VOLUME /var/www
-
 WORKDIR /var/www/html
 
 EXPOSE 9000
