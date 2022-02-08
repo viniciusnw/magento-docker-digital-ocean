@@ -40,6 +40,7 @@ services:
     links:
       - db
     volumes: 
+      - ./docker/cron/cronstart:/usr/local/bin/cronstart
       - ./src:/var/www/html:cached
       - ~/.composer:/var/www/.composer:cached
 
