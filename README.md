@@ -11,13 +11,19 @@ Renew
 docker-compose -f docker-compose.certbot-renew.yml run --rm certbot
 ```
 
+### Turn off Apache
+```bash
+sudo /etc/init.d/apache2 stop
+```
 ### Setup
+```bash
 bin/setup url
-
+```
 ### Start
+```bash
 bin/start
-
-### Recover DB
+```
+### After recover DB
 ```sql
 UPDATE `core_config_data` SET `value` = 'https://url/' WHERE `core_config_data`.`config_id` = 381;
 UPDATE `core_config_data` SET `value` = 'https://url/' WHERE `core_config_data`.`config_id` = 4;
