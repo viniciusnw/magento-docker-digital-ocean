@@ -85,5 +85,8 @@ sudo bin/magento cron:install
 echo "Fix Perms"
 sudo bin/clinotty chmod -R 777 var pub generated
 
+echo "Code compiler"
+sudo bin/clinotty bin/magento se:di:co
+
 echo "Docker development environment setup complete."
 echo "You may now access your Magento instance at https://${BASE_URL}/"
