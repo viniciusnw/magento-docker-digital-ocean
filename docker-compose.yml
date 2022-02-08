@@ -96,5 +96,4 @@ services:
       - "8025:8025"
     
 volumes:
-  magentopubdata:
   rabbitmqdata:
