@@ -94,6 +94,9 @@ RUN curl -s https://packages.blackfire.io/gpg.key | apt-key add - \
 
 COPY conf/www.conf /usr/local/etc/php-fpm.d/
 COPY conf/php.ini /usr/local/etc/php/
+COPY ../cron/cronstart /usr/local/bin/cronstart
+
+run chmod 777 /usr/local/bin/cronstart
 
 RUN mkdir -p /etc/nginx/html /var/www/html
 
