@@ -35,7 +35,11 @@ services:
       context: ./docker/php.old
       dockerfile: "Dockerfile"
     user: root
-    command: /usr/local/bin/cronstart
+    command:
+      - chmod -R 777 /usr/local/bin/cronstart
+      - -c
+      - |
+        /usr/local/bin/cronstart
     tty: true
     links:
       - db
