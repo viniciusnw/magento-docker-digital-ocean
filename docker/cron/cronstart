@@ -2,5 +2,6 @@
 service cron start
 
 touch /var/www/html/var/.setup_cronjob_status /var/www/html/var/.update_cronjob_status
+/usr/local/bin/php /var/www/html/bin/magento cron:install --force
 
 /usr/bin/crontab

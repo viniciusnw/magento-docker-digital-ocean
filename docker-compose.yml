@@ -34,11 +34,11 @@ services:
     build:
       context: ./docker/php.old
       dockerfile: "Dockerfile"
-    user: root
     command: /usr/local/bin/cronstart
     tty: true
     links:
       - db
+      - mailhog
     volumes: 
       - ./docker/cron/cronstart:/usr/local/bin/cronstart
       - ./src:/var/www/html:cached

@@ -79,9 +79,6 @@ sudo bin/clinotty bin/magento cache:flush
 echo "Ensuring Composer auth.json is setup..."
 sudo bin/setup-composer-auth
 
-echo "Installing cron (see docker-compose.yml to enable)..."
-sudo bin/magento cron:install
-
 echo "Fix Perms"
 sudo bin/clinotty chmod -R 777 var pub generated
 

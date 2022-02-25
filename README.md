@@ -30,3 +30,7 @@ UPDATE `core_config_data` SET `value` = 'https://url/' WHERE `core_config_data`.
 UPDATE `core_config_data` SET `value` = 'elasticsearch' WHERE `core_config_data`.`config_id` = 1;
 UPDATE `core_config_data` SET `value` = '9200' WHERE `core_config_data`.`config_id` = 2;
 ```
+
+```bash
+bin/magento se:up ; bin/magento se:di:co
+```
