@@ -36,6 +36,7 @@ UPDATE `core_config_data` SET `value` = '9200' WHERE `core_config_data`.`config_
 
 ```bash
 bin/magento se:up ; bin/magento se:di:co
+bin/magento indexer:reset ; bin/magento indexer:reindex
 ```
 
 ### Cron Install
