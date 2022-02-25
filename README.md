@@ -15,14 +15,17 @@ docker-compose -f docker-compose.certbot-renew.yml run --rm certbot
 ```bash
 sudo /etc/init.d/apache2 stop
 ```
+
 ### Setup
 ```bash
 bin/setup url
 ```
+
 ### Start
 ```bash
 bin/start
 ```
+
 ### After recover DB
 ```sql
 UPDATE `core_config_data` SET `value` = 'https://url/' WHERE `core_config_data`.`config_id` = 381;
@@ -33,4 +36,12 @@ UPDATE `core_config_data` SET `value` = '9200' WHERE `core_config_data`.`config_
 
 ```bash
 bin/magento se:up ; bin/magento se:di:co
+```
+
+### Cron Install
+```bash
+docker-compose run -d cron
+docker exec -it magento-docker-digitalocean_cron_1 bash
+bin/magento cron:install --force
+service cron start
 ```
