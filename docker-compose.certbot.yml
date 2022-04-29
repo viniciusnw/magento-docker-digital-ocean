@@ -18,7 +18,7 @@ services:
 
   certbot:
     image: certbot/certbot:latest
-    command: certonly -v --webroot --webroot-path /var/www/certbot/ --email vinicius@castledigital.com.br --agree-tos --no-eff-email --staple-ocsp --must-staple -d magento-preview.castleit.io.com.br -d www.magento-preview.castleit.io.com.br
+    command: certonly -v --webroot --webroot-path /var/www/certbot/ --email vinicius@castledigital.com.br --agree-tos --no-eff-email --staple-ocsp --must-staple -d magento-preview.castleit.io -d www.magento-preview.castleit.io
     depends_on:
       - nginx
     volumes:
