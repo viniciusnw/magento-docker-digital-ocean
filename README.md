@@ -11,14 +11,9 @@ Renew
 docker-compose -f docker-compose.certbot-renew.yml run --rm certbot
 ```
 
-### Turn off Apache
-```bash
-sudo /etc/init.d/apache2 stop
-```
-
 ### Setup
 ```bash
-bin/setup url
+bin/setup magento-preview.castleit.io
 ```
 
 ### Start

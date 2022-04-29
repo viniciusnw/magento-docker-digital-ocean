@@ -57,5 +57,5 @@ docker-compose -f docker-compose.yml up -d --remove-orphans "$@"
 ## Then uncomment the below line (and leave uncommented) to start the agent automatically with bin/start:
 #bin/root /etc/init.d/blackfire-agent start
 
-bin/devtools-cli-check
-bin/cliq /var/www/.composer-global/vendor/bin/cache-clean.js --quiet --watch &
+# bin/devtools-cli-check
+# bin/cliq /var/www/.composer-global/vendor/bin/cache-clean.js --quiet --watch &
