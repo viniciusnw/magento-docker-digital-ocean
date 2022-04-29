@@ -34,7 +34,6 @@ services:
     build:
       context: ./docker/php.old
       dockerfile: "Dockerfile"
-    command: /usr/bin/crontab
     tty: true
     links:
       - db
