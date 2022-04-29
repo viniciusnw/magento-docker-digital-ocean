@@ -28,10 +28,10 @@ bin/start
 
 ### After recover DB
 ```sql
-UPDATE `core_config_data` SET `value` = 'https://url/' WHERE `core_config_data`.`config_id` = 381;
-UPDATE `core_config_data` SET `value` = 'https://url/' WHERE `core_config_data`.`config_id` = 4;
-UPDATE `core_config_data` SET `value` = 'elasticsearch' WHERE `core_config_data`.`config_id` = 1;
-UPDATE `core_config_data` SET `value` = '9200' WHERE `core_config_data`.`config_id` = 2;
+UPDATE `core_config_data` SET `value` = 'https://url/' WHERE `core_config_data`.`path` = 'web/secure/base_url';
+UPDATE `core_config_data` SET `value` = 'https://url/' WHERE `core_config_data`.`path` = 'web/unsecure/base_url';
+UPDATE `core_config_data` SET `value` = 'elasticsearch' WHERE `core_config_data`.`path` = 'catalog/search/elasticsearch7_server_hostname';
+UPDATE `core_config_data` SET `value` = '9200' WHERE `core_config_data`.`path` = 'catalog/search/elasticsearch7_server_port';
 ```
 
 ```bash
